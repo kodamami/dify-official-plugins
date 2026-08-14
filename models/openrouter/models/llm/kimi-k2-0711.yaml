@@ -40,4 +40,5 @@ pricing:
   input: '0.2'
   output: '0.2'
   unit: '0.001'
-  currency: RMB 
+  currency: RMB
+deprecated: true
