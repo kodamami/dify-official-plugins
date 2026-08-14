@@ -22,7 +22,7 @@ def llm() -> OpenRouterLargeLanguageModel:
     return OpenRouterLargeLanguageModel(model_schemas=[])
 
 
-@pytest.mark.parametrize("effort", ["low", "medium", "high"])
+@pytest.mark.parametrize("effort", ["low", "medium", "high", "xhigh", "max"])
 def test_set_reasoning_params_supports_requested_effort_levels(effort: str) -> None:
     model_parameters = {
         "reasoning_effort": effort,
