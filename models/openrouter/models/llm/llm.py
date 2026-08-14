@@ -155,15 +155,7 @@ class OpenRouterLargeLanguageModel(OAICompatLargeLanguageModel):
         if isinstance(reasoning_budget, int):
             reasoning_params["max_tokens"] = reasoning_budget
 
-        if reasoning_effort in [
-            "max",
-            "xhigh",
-            "high",
-            "medium",
-            "low",
-            "minimal",
-            "none",
-        ]:
+        if reasoning_effort in ["max", "xhigh", "high", "medium", "low", "minimal", "none"]:
             reasoning_params["effort"] = reasoning_effort
 
         if reasoning_params:
