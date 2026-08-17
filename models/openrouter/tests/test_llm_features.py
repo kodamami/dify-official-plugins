@@ -38,6 +38,21 @@ def test_set_reasoning_params_supports_requested_effort_levels(effort: str) -> N
     }
 
 
+def test_no_llm_schema_uses_the_broken_response_format_template() -> None:
+    # The SDK response_format template offers JSON/XML, which OpenRouter
+    # rejects; schemas must declare their own valid options instead.
+    llm_dir = Path(__file__).resolve().parent.parent / "models" / "llm"
+    offenders = []
+    for path in sorted(llm_dir.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        schema = yaml.safe_load(path.read_text(encoding="utf-8"))
+        for rule in schema["parameter_rules"]:
+            if rule["name"] == "response_format" and rule.get("use_template"):
+                offenders.append(schema["model"])
+    assert offenders == []
+
+
 def test_minimax_m3_exposes_reasoning_and_vision_controls() -> None:
     schema_path = (
         Path(__file__).resolve().parent.parent / "models" / "llm" / "minimax-m3.yaml"
