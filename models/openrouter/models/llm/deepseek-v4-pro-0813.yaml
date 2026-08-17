@@ -60,7 +60,7 @@ parameter_rules:
       en_US: Whether to hide the thought process.
     required: false
 pricing:
-  input: "0.435"
-  output: "0.87"
+  input: "1.32"
+  output: "3.96"
   unit: "0.000001"
   currency: USD
