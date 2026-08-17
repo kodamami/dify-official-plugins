@@ -10,7 +10,7 @@ from dify_plugin.core.entities.plugin.request import (
     ModelInvokeTextEmbeddingRequest,
     PluginInvokeType,
 )
-from dify_plugin.entities.model import ModelType
+from dify_plugin.entities.model import EmbeddingInputType, ModelType
 from dify_plugin.entities.model.text_embedding import TextEmbeddingResult
 from dify_plugin.integration.run import PluginRunner
 
@@ -62,6 +62,7 @@ def test_embedding_invoke(model_name: str) -> None:
             "Hello, how are you?",
             "Dify is an LLM application development platform.",
         ],
+        input_type=EmbeddingInputType.DOCUMENT,
     )
 
     with PluginRunner(
