@@ -36,8 +36,6 @@ parameter_rules:
       - None
       - truncate
       - error
-  - name: response_format
-    use_template: response_format
 pricing:
   input: '0.01'
   output: '0.02'
